@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dds xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:////home/matt/rti_connext_dds-7.2.0/bin/../resource/app/app_support/rtiddsgen/schema/rti_dds_profiles.xsd">
+<types>
+<typedef name="FACE_Short" type="int16"/>
+<typedef name="FACE_Long" type="int32"/>
+<typedef name="FACE_LongLong" type="int64"/>
+<typedef name="FACE_UnsignedShort" type="uint16"/>
+<typedef name="FACE_UnsignedLong" type="uint32"/>
+<typedef name="FACE_UnsignedLongLong" type="uint64"/>
+<typedef name="FACE_Float" type="float32"/>
+<typedef name="FACE_Double" type="float64"/>
+<typedef name="FACE_LongDouble" type="float128"/>
+<typedef name="FACE_Char" type="char8"/>
+<typedef name="FACE_Boolean" type="boolean"/>
+<typedef name="FACE_Octet" type="byte"/>
+<module name="FACE">
+  <typedef name="Short" type="nonBasic"  nonBasicTypeName= "FACE_Short"/>
+  <typedef name="Long" type="nonBasic"  nonBasicTypeName= "FACE_Long"/>
+  <typedef name="LongLong" type="nonBasic"  nonBasicTypeName= "FACE_LongLong"/>
+  <typedef name="UnsignedShort" type="nonBasic"  nonBasicTypeName= "FACE_UnsignedShort"/>
+  <typedef name="UnsignedLong" type="nonBasic"  nonBasicTypeName= "FACE_UnsignedLong"/>
+  <typedef name="UnsignedLongLong" type="nonBasic"  nonBasicTypeName= "FACE_UnsignedLongLong"/>
+  <typedef name="Float" type="nonBasic"  nonBasicTypeName= "FACE_Float"/>
+  <typedef name="Double" type="nonBasic"  nonBasicTypeName= "FACE_Double"/>
+  <typedef name="LongDouble" type="nonBasic"  nonBasicTypeName= "FACE_LongDouble"/>
+  <typedef name="Char" type="nonBasic"  nonBasicTypeName= "FACE_Char"/>
+  <typedef name="Boolean" type="nonBasic"  nonBasicTypeName= "FACE_Boolean"/>
+  <typedef name="Octet" type="nonBasic"  nonBasicTypeName= "FACE_Octet"/>
+</module>
+
+<module name="FACE">
+  <module name="DM">
+    <module name="RTI">
+      <enum name="ShapeFillKind">
+        <enumerator name="SOLID_FILL"/>
+        <enumerator name="TRANSPARENT_FILL"/>
+        <enumerator name="HORIZONTAL_HATCH_FILL"/>
+        <enumerator name="VERTICAL_HATCH_FILL"/>
+      </enum> 
+      <struct name= "ShapeType">
+        <member name="color" stringMaxLength="128" type="string" key="true"/>
+        <member name="x" type="nonBasic"  nonBasicTypeName= "FACE::Long"/>
+        <member name="y" type="nonBasic"  nonBasicTypeName= "FACE::Long"/>
+        <member name="shapesize" type="nonBasic"  nonBasicTypeName= "FACE::Long"/>
+      </struct>
+      <struct name= "ShapeTypeExtended" baseType="FACE::DM::RTI::ShapeType">
+        <member name="fillKind" type="nonBasic"  nonBasicTypeName= "FACE::DM::RTI::ShapeFillKind"/>
+        <member name="angle" type="nonBasic"  nonBasicTypeName= "FACE::Float"/>
+      </struct>
+    </module>
+  </module>
+</module>
+</types>
+</dds>

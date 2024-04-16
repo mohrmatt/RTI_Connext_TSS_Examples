@@ -1,0 +1,41 @@
+/*****************************************************************************/
+/*         (c) Copyright, Real-Time Innovations, All rights reserved.        */
+/*                                                                           */
+/*         Permission to modify and use for internal purposes granted.       */
+/* This software is provided "as is", without warranty, express or implied.  */
+/*                                                                           */
+/*****************************************************************************/
+
+#include "FACE/types.idl"
+
+module FACE {
+
+module DM {
+
+module RTI {
+
+enum ShapeFillKind {
+    SOLID_FILL,
+    TRANSPARENT_FILL,
+    HORIZONTAL_HATCH_FILL,
+    VERTICAL_HATCH_FILL
+};
+
+struct ShapeType 
+{
+    string<128> color; //@key
+    FACE::Long x;
+    FACE::Long y;
+    FACE::Long shapesize;
+};//@Extensibility EXTENSIBLE_EXTENSIBILITY 
+
+struct ShapeTypeExtended : ShapeType {
+    ShapeFillKind fillKind;
+    FACE::Float angle;
+};//@Extensibility EXTENSIBLE_EXTENSIBILITY 
+
+};
+
+};
+
+};

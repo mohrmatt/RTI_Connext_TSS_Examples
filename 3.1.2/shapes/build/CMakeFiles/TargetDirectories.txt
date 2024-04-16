@@ -1,0 +1,4 @@
+/home/matt/git/3.1.2_TSS/shapes/build/CMakeFiles/rebuild_cache.dir
+/home/matt/git/3.1.2_TSS/shapes/build/CMakeFiles/edit_cache.dir
+/home/matt/git/3.1.2_TSS/shapes/build/CMakeFiles/ShapeTypeExtended_App.dir
+/home/matt/git/3.1.2_TSS/shapes/build/CMakeFiles/ShapeType_App.dir

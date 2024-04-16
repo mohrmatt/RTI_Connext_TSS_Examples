@@ -1,0 +1,21 @@
+This example has been test with RTI Connext Pro 6.1.2 and RTI TSS 3.1.2.
+
+Steps to build this example:
+  1. Download and install Connext Pro 6.1.2 (host/target)
+  2. Download and unzip TSS 3.1.2
+  3. Build TSS
+       a. Set NDDSHOME to Pro install location
+       b. Set RTITSSHOME to TSS install location
+       c. Set RTITSSARCH to architecture of Pro target library (ie: x64Linux4gcc7.3.0)
+       d. Make build dir
+       e. Build config command: cmake -DRTI_CONNEXT_TYPE=pro -DRTI_TSS_ENABLE_FACE_COMPLIANCE=GeneralPurpose -DCMAKE_BUILD_TYPE=release -DBUILD_SHARED_LIBS=False -DBUILD_STATIC_LIBS=True ../
+       f. Build command: cmake --build .
+  4. Build shapes example
+     a. mkdir build; cd build
+     b. Build config command: cmake -DRTI_CONNEXT_TYPE=pro -DRTI_TSS_ENABLE_FACE_COMPLIANCE=None -DCMAKE_BUILD_TYPE=Release ../
+     c. Build command: cmake --build .
+  5. From the shapes dir execute shapeType_App or shapesTypeExtended_app 
+     cd ..;./build/ShapeTypeExtended_App
+
+
+  

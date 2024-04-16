@@ -1,0 +1,42 @@
+To Run the QoS examples:
+
+from the ...RTI-Connext-Examples/3.1.2_TSS/shapes directory
+
+(1) Default: No QoS - Triangle Exenteded'=
+    >  ./build/ShapeTypeExtended
+    
+In Shapes Demo tool - simply subscribe to a Triangle
+
+Result: Orange hatch Triangle moving across the window.
+
+
+(2) QOS - Exclusive Owership
+in two windows from the shapes directory
+  > ./build/ShapeTypeExtended -ownership1
+  > ./build/ShapeTypeExtended -ownership2
+
+In Shapes Demo Tool - Subscribe to a circle, select Exclusive Ownership with a deadline of 1 sec.
+
+Result: Blue hatch circle size 50 moving across the window
+
+Now - Stop ownership1 publisher
+
+Result: - smaller size 30 blue hatch circle is now moving (lower strength took over after 1 sec deadline)
+
+Now - restart the ownership1 publisher
+
+Result: Larger circle will take over and move across the screen.
+
+(3) QoS Late Joiner (Durability)
+
+in a window:
+  > ./build/ShapesTypeExtended -late
+
+allow it to run a few seconds to build up a history
+
+In the Shapes Demo Tool - Subscribe to a Triangle,
+       select:  Durablility Transient Local, History Depth 25, and  Reliability
+
+Result: 25 Green (looks blue due to blue outline)  hatch rotating Trangles will instantly appear
+
+
