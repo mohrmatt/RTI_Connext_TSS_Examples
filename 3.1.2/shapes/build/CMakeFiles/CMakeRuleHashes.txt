@@ -1,2 +1,0 @@
-# Hashes of file build rules.
-86c8e62541293d4e22c8159ff1d4ebf6 ../gen/ShapeTypeSupport.cxx
