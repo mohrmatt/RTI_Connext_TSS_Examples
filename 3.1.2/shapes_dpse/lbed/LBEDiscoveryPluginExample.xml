@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<LBEDiscoveryPluginProfile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <participant name="FACE_SHAPES_DEMO_PUB1">
+    <datawriter>
+      <rtps_object_id>100</rtps_object_id>
+      <topic_name>Square</topic_name>
+      <type_name>ShapeType</type_name>
+      <topic_keyed>true</topic_keyed>
+
+      <reliability>
+        <kind>RELIABLE_RELIABILITY_QOS</kind>
+      </reliability>
+    </datawriter>
+
+    <datawriter>
+      <rtps_object_id>101</rtps_object_id>
+      <topic_name>Circle</topic_name>
+      <type_name>ShapeType</type_name>
+      <topic_keyed>true</topic_keyed>
+
+      <reliability>
+        <kind>RELIABLE_RELIABILITY_QOS</kind>
+      </reliability>
+    </datawriter>
+
+    <datawriter>
+      <rtps_object_id>102</rtps_object_id>
+      <topic_name>Triangle</topic_name>
+      <type_name>ShapeType</type_name>
+      <topic_keyed>true</topic_keyed>
+
+      <reliability>
+        <kind>RELIABLE_RELIABILITY_QOS</kind>
+      </reliability>
+    </datawriter>
+
+      <datawriter>
+        <rtps_object_id>103</rtps_object_id>
+        <topic_name>Square</topic_name>
+        <type_name>ShapeType</type_name>
+        <topic_keyed>true</topic_keyed>
+
+        <reliability>
+          <kind>RELIABLE_RELIABILITY_QOS</kind>
+        </reliability>
+      </datawriter>
+
+      <datawriter>
+        <rtps_object_id>104</rtps_object_id>
+        <topic_name>Circle</topic_name>
+        <type_name>ShapeType</type_name>
+        <topic_keyed>true</topic_keyed>
+
+        <reliability>
+          <kind>RELIABLE_RELIABILITY_QOS</kind>
+        </reliability>
+      </datawriter>
+
+      <datawriter>
+        <rtps_object_id>105</rtps_object_id>
+        <topic_name>Triangle</topic_name>
+        <type_name>ShapeType</type_name>
+        <topic_keyed>true</topic_keyed>
+
+        <reliability>
+          <kind>RELIABLE_RELIABILITY_QOS</kind>
+        </reliability>
+      </datawriter>
+  </participant>
+
+  <participant name="FACE_SHAPES_DEMO_SUB1">
+      <datareader>
+        <rtps_object_id>200</rtps_object_id>
+        <topic_name>Square</topic_name>
+        <type_name>ShapeType</type_name>
+        <topic_keyed>true</topic_keyed>
+
+        <reliability>
+          <kind>RELIABLE_RELIABILITY_QOS</kind>
+        </reliability>
+      </datareader>
+
+      <datareader>
+        <rtps_object_id>201</rtps_object_id>
+        <topic_name>Circle</topic_name>
+        <type_name>ShapeType</type_name>
+        <topic_keyed>true</topic_keyed>
+
+        <reliability>
+          <kind>RELIABLE_RELIABILITY_QOS</kind>
+        </reliability>
+      </datareader>
+
+      <datareader>
+        <rtps_object_id>202</rtps_object_id>
+        <topic_name>Triangle</topic_name>
+        <type_name>ShapeType</type_name>
+        <topic_keyed>true</topic_keyed>
+
+        <reliability>
+          <kind>RELIABLE_RELIABILITY_QOS</kind>
+        </reliability>
+      </datareader>
+
+      <datareader>
+        <rtps_object_id>203</rtps_object_id>
+        <topic_name>Square</topic_name>
+        <type_name>ShapeType</type_name>
+        <topic_keyed>true</topic_keyed>
+
+        <reliability>
+          <kind>RELIABLE_RELIABILITY_QOS</kind>
+        </reliability>
+      </datareader>
+
+      <datareader>
+        <rtps_object_id>204</rtps_object_id>
+        <topic_name>Circle</topic_name>
+        <type_name>ShapeType</type_name>
+        <topic_keyed>true</topic_keyed>
+
+        <reliability>
+          <kind>RELIABLE_RELIABILITY_QOS</kind>
+        </reliability>
+      </datareader>
+
+      <datareader>
+        <rtps_object_id>205</rtps_object_id>
+        <topic_name>Triangle</topic_name>
+        <type_name>ShapeType</type_name>
+        <topic_keyed>true</topic_keyed>
+
+        <reliability>
+          <kind>RELIABLE_RELIABILITY_QOS</kind>
+        </reliability>
+      </datareader>
+
+    </participant>
+</LBEDiscoveryPluginProfile>

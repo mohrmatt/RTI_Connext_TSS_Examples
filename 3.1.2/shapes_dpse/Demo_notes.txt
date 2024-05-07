@@ -1,0 +1,23 @@
+Example standalone application using DPSE to communicate with Shapes Demo. Shapes Demo uses LBED to communicate with standalone applications.
+
+Steps to execute demo communication
+  1. start standalone application
+      a. ./ShapeType_publisher -type shapetypex -topic sq
+      b. Use -h for command line options
+      c. default topic is square and default type is ShapeTypeExtended
+  2. start Shapes Demo application (version 6.x or 7.x)
+  3. modify Shapes Demo Qos profiles.
+      a. select Configuration
+      b. select Stop
+         i. optionally change type from ShapeTypeExtended to ShapeType
+      c. select Manage Qos
+          i. select Add
+          ii. navigate to /path/to/git/RTI_Connext_TSS_Examples/3.1.2/shapes_dpse/lbed/USER_QOS_PROFILES.xml
+          iii. select OK
+      d. select profile with matching topic and datatype (ie: LBED_Square_ShapeTypeX_Subscriber_6.x)
+      e. select start
+  4. select Subscribe to matching topic
+      a. from choose profile drop down, select same profile as step 3d
+      b. select OK
+
+These steps can be repeated for either type (ShapeType or ShapeTypeExtended) and any topic (Square, Circle or Triangle).

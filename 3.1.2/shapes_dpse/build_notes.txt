@@ -1,0 +1,29 @@
+This example has been tested with RTI Connext Micro 2.4.13.4 and RTI TSS 3.1.2 on Ubuntu 20.
+
+Steps to build this example:
+  1. Download and unzip Connext Micro 2.4.13.4
+  2. Build Micro
+       a. Set RTIMEHOME to Micro install location
+       b. cd /path/to/micro/installation
+       c. Build command: ./$RTIMEHOME/resource/scripts/rtime-make --target Linux --name x64Linux4gcc7.3.0FACE_SB --build --config Release -RTIMICRO_BUILD_ENABLE_FACE_COMPLIANCE=SafetyBase -DRTIME_CERT=TRUE -- all
+  3. Download and unzip Connext TSS 3.1.2
+  4. Build TSS
+       a. Set RTIMEHOME to Micro install location
+       b. Set RTITSSHOME to TSS install location
+       c. Set RTITSSARCH to architecture of Micro target library (ie: x64Linux4gcc7.3.0FACE_SB)
+       d. cd /path/to/tss/installation
+       e. mkdir build; cd build
+       f. Build config command: cmake -DRTI_CONNEXT_TYPE=micro -DRTI_TSS_ENABLE_FACE_COMPLIANCE=SafetyBase -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=False -DBUILD_STATIC_LIBS=True -DFACE_SEQUENCE_AND_STRING_SERIALIZABLE=True ../
+       g. Build command: cmake --build .
+  5. Build shapes example
+       a. cd /path/to/git/RTI_Connext_TSS_Examples/3.1.2/shapes_dpse
+       b. mkdir build; cd build
+       c. Build config command: cmake -DRTI_CONNEXT_TYPE=micro -DRTI_TSS_ENABLE_FACE_COMPLIANCE=SafetyBase -DCMAKE_BUILD_TYPE=Release -DFACE_SEQUENCE_AND_STRING_SERIALIZABLE=True ../
+       d. Build command: cmake --build .
+  6. Execute Shapes publisher or subscriber application
+       a. ./ShapeType_publisher or ./ShapeType_subscriber
+       b. Use -h option for command line parameters
+    
+
+
+  
