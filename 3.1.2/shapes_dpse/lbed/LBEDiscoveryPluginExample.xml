@@ -37,7 +37,7 @@
       <datawriter>
         <rtps_object_id>103</rtps_object_id>
         <topic_name>Square</topic_name>
-        <type_name>ShapeType</type_name>
+        <type_name>ShapeTypeExtended</type_name>
         <topic_keyed>true</topic_keyed>
 
         <reliability>
@@ -48,7 +48,7 @@
       <datawriter>
         <rtps_object_id>104</rtps_object_id>
         <topic_name>Circle</topic_name>
-        <type_name>ShapeType</type_name>
+        <type_name>ShapeTypeExtended</type_name>
         <topic_keyed>true</topic_keyed>
 
         <reliability>
@@ -59,7 +59,7 @@
       <datawriter>
         <rtps_object_id>105</rtps_object_id>
         <topic_name>Triangle</topic_name>
-        <type_name>ShapeType</type_name>
+        <type_name>ShapeTypeExtended</type_name>
         <topic_keyed>true</topic_keyed>
 
         <reliability>
@@ -105,7 +105,7 @@
       <datareader>
         <rtps_object_id>203</rtps_object_id>
         <topic_name>Square</topic_name>
-        <type_name>ShapeType</type_name>
+        <type_name>ShapeTypeExtended</type_name>
         <topic_keyed>true</topic_keyed>
 
         <reliability>
@@ -116,7 +116,7 @@
       <datareader>
         <rtps_object_id>204</rtps_object_id>
         <topic_name>Circle</topic_name>
-        <type_name>ShapeType</type_name>
+        <type_name>ShapeTypeExtended</type_name>
         <topic_keyed>true</topic_keyed>
 
         <reliability>
@@ -127,7 +127,7 @@
       <datareader>
         <rtps_object_id>205</rtps_object_id>
         <topic_name>Triangle</topic_name>
-        <type_name>ShapeType</type_name>
+        <type_name>ShapeTypeExtended</type_name>
         <topic_keyed>true</topic_keyed>
 
         <reliability>

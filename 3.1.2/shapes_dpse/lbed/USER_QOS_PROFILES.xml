@@ -89,17 +89,40 @@ XML" chapter in the RTI Connext DDS Core Libraries User's Manual.
                         </element>
                         <element>
                             <name>dds.discovery.endpoint.lbediscovery.config_file</name>
-                            <value>/home/matt/git/test/RTI_Connext_TSS_Examples/3.1.2/shapes_dpse/lbed/LBEDiscoveryPluginExample.xml</value>
+                            <value>$(CONFIG_PATH)/LBEDiscoveryPluginExample.xml</value>
                         </element>
                     </value>
                 </property>
             </domain_participant_qos>
         </qos_profile>
 
-
-
         <qos_profile name="LBED_Base_Profile_7.3" base_name="BuiltinQosLib::Generic.StrictReliable">
             <domain_participant_qos>
+                <discovery>
+                    <enabled_transports>
+                        <element>udpv4</element>
+                    </enabled_transports>
+                </discovery>
+                <transport_builtin>
+                    <!-- Enable only UDPv4 and locahost so this works with Micro in a PC with many interfaces -->
+                    <mask>UDPv4</mask>
+                    <udpv4>
+                        <allow_interfaces_list>
+                            <element>127.0.0.1</element>
+                        </allow_interfaces_list>
+                    </udpv4>
+                </transport_builtin>
+                <discovery_config>
+                    <builtin_discovery_plugins>DPSE</builtin_discovery_plugins>
+                </discovery_config>
+            </domain_participant_qos>
+        </qos_profile>
+
+        <qos_profile name="AC_LBED_Base_Profile_7.3" base_name="BuiltinQosLib::Generic.StrictReliable">
+            <domain_participant_qos>
+                <participant_name>
+                    <name>Admin</name>
+                </participant_name>
                 <discovery>
                     <enabled_transports>
                         <element>udpv4</element>
@@ -546,7 +569,24 @@ XML" chapter in the RTI Connext DDS Core Libraries User's Manual.
     </qos_library>
 
     <types>
-        <include file="../idl/ShapeType.xml"/>
+        <enum name="ShapeFillKind">
+            <enumerator name="SOLID_FILL"/>
+            <enumerator name="TRANSPARENT_FILL"/>
+            <enumerator name="HORIZONTAL_HATCH_FILL"/>
+            <enumerator name="VERTICAL_HATCH_FILL"/>
+        </enum>
+
+        <struct name= "ShapeType">
+            <member name="color" stringMaxLength="128" type="string" key="true"/>
+            <member name="x" type="int32"/>
+            <member name="y" type="int32"/>
+            <member name="shapesize" type="int32"/>
+        </struct>
+
+        <struct name= "ShapeTypeExtended" baseType="ShapeType">
+            <member name="fillKind" type="nonBasic"  nonBasicTypeName= "ShapeFillKind"/>
+            <member name="angle" type="float32"/>
+        </struct>
     </types>
 
     <domain_library name="LBEDiscoveryPluginExample_Domain_Library">
