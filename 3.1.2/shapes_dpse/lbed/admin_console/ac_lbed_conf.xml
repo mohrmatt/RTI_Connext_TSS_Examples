@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<LBEDiscoveryPluginProfile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <participant name="Admin"><!-- Empty participant to avoid error msg in AC --></participant>
+
+    <participant name="FACE_SHAPES_DEMO_PUB1">
+        <datawriter>
+        <rtps_object_id>100</rtps_object_id>
+        <topic_name>Square</topic_name>
+        <type_name>ShapeType</type_name>
+        <topic_keyed>true</topic_keyed>
+
+        <reliability>
+            <kind>RELIABLE_RELIABILITY_QOS</kind>
+        </reliability>
+        </datawriter>
+    </participant>
+
+    <participant name="FACE_SHAPES_DEMO_SUB1">
+        <datareader>
+        <rtps_object_id>200</rtps_object_id>
+        <topic_name>Square</topic_name>
+        <type_name>ShapeType</type_name>
+        <topic_keyed>true</topic_keyed>
+
+        <reliability>
+            <kind>RELIABLE_RELIABILITY_QOS</kind>
+        </reliability>
+        </datareader>
+    </participant>
+</LBEDiscoveryPluginProfile>

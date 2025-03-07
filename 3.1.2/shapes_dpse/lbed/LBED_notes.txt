@@ -1,40 +1,69 @@
 The primary goal of this shapes demo is to communicate between a TSS application and the Shapes Demo. In order to faciliate communication there is a workaround in the TSS application to change the type name from FACE::DM::RTI:ShapeType to ShapeType. This change is needed because in order to match when using DPSE, the type names need to match and Shapes Demo is looking for ShapeType.
 
-These notes are going to outline subscribing from Admin Console 7.3/6.x to a TSS application using DPSE with LBED. This repo includes all the necessary configuration files needed for this demo.
+Files:
+ - RTI_Connext_TSS_Examples/3.1.2/shapes_dpse/lbed/LBEDiscoveryPluginExample.xml: LBED configuration referenced by USER_QOS_PROFILES_6.x.xml
+ - RTI_Connext_TSS_Examples/3.1.2/shapes_dpse/lbed/USER_QOS_PROFILES_6.x.xml: QoS profiles for 6.x Shapes Demo using LBED
+ - RTI_Connext_TSS_Examples/3.1.2/shapes_dpse/lbed/USER_QOS_PROFILES_7.x.xml: QoS profiles for 7.x Shapes Demo using LBED
+ - RTI_Connext_TSS_Examples/3.1.2/shapes_dpse/idl/ShapeType_orig.xml: IDL converted to XML
+ 
+ - RTI_Connext_TSS_Examples/3.1.2/shapes_dpse/lbed/admin_console/ac_lbed_conf.xml: LBED configuration file referenced in ac_qos_lbed_6.x.xml
+ - RTI_Connext_TSS_Examples/3.1.2/shapes_dpse/lbed/admin_console/ac_qos_lbed_6.x.xml: administrative/subscriber QoS profiles for Admin Console 6.x using LBED
+ - RTI_Connext_TSS_Examples/3.1.2/shapes_dpse/lbed/admin_console/ac_qos_lbed_7.x.xml: administrative/publisher/subscriber QoS profiles for Admin Console 7.x using LBED
+ 
 
-Configurations
- - RTI_Connext_TSS_Examples/3.1.2/shapes_dpse/lbed/RTI_ADMIN_CONSOLE_PROFILE_6.x_LBED.xml: includes profile that enables LBED and inherits from the default Admin Console profile.
- - RTI_Connext_TSS_Examples/3.1.2/shapes_dpse/lbed/LBEDiscoveryPluginExample.xml: indluces LBED definitions used for 6.x
- - RTI_Connext_TSS_Examples/3.1.2/shapes_dpse/lbed/USER_QOS_PROFILES.xml: includes QoS profile for Admin Console 7.x, profiles for 6.x, 7.3 and LBED configuration for 7.3.
- - RTI_Connext_TSS_Examples/3.1.2/shapes_dpse/idl/ShapeType.xml: IDL converted to XML
-
------------------------------
-Steps to execute Demo of Admin Console subscribing to a TSS application.
-
-*Best practice is to configure Admin Console then start your TSS application.*
+--------------------------------------------------------------------------------------------
+Steps to execute Demo of Admin Console 7.x/6.x subscribing to a TSS application.
+--------------------------------------------------------------------------------------------
 
 1. Configure Admin Console.
-   a. Admin Console 6.x
-      - Load RTI_ADMIN_CONSOLE_PROFILE_6.x_LBED.xml QoS file.
-         - In Admin Console navigate to View -> Preferences.
-         - In the Preferences Window select Administraiton in the left panel.
+   a. Load Admin Console QoS config
+      - Admin Console 7.x: ac_qos_lbed_7.x.xml
+      - Admin Console 6.x: ac_qos_lbed_6.x.xml
+      - In Admin Console navigate to View -> Preferences.
+      - In the Preferences Window select Administraiton in the left panel.
          - In the Administration window select 'Add Files(s)' from the Files specifying QoS profiles section and navaigate to the XML file.
-      - Once loaded, open the drop down menu in the Domains section and select the profile "AC_LBED_Base_Profile_6.x".
-
-   b. Admin Console 7.3
-      - Load USER_QOS_PROFILES.xml QoS file.
-         - In Admin Console navigate to View -> Preferences.
-         - In the Preferences Window select Administraiton in the left panel.
-         - In the Administration window select 'Add Files(s)' from the Files specifying QoS profiles section and navaigate to the XML file.
-      - Once loaded, open the drop down menu in the Domains section and select the profile "AC_LBED_Base_Profile_7.3".
+      - Once loaded, open the drop down menu in the Domains section and select the profile "AC_LBED_Admin".
 
 2. Start TSS application
-3. In Admin Console DDS logical view right click on the topic published by the TSS application and select subscribe.
-   - Note, that Square, Circle and Triangle topic will appear in the DDS Logical view. This occurs because all topics are defined in the LBED configuration.
+   a. From the build directory: ./Shapetype_publisher -type shapetype -topic sq
+
+3. In Admin Console DDS logical view right click on the sqaure topic published by the TSS application and select subscribe.
    a. Configure subscription
-      - Select 'Load Data Types from XML file'. Select "+" and navigate the to the ShapeType.xml file then press "OK".
-      - Select the published type name from the drop down list.
-      - Open the advanced settings.
-         - Select the QoS profile with the correct type and version (ie LBEDiscoveryPluginExample_Library::LBED_Circle_ShapeTypeX_Subscriber_6.x or 7.3).
-      - Press 'OK' to subsribe
+      - Select 'Load Data Types from XML file'.
+        - Select "+" and navigate to ShapeType_orig.xml then press "OK".
+        - Select ShapeType type name from the drop down list.
+        - Open the advanced settings.
+          - Select the QoS profile named "AC_LBED_Subscriber".
+        - Press 'OK' to subsribe
+
 4. Navigate to the topic data tab and see samples as they arrive
+
+--------------------------------------------------------------------------------------------
+Steps to execute Demo of Admin Console 7.x publishing to a TSS application.
+--------------------------------------------------------------------------------------------
+
+1. Configure Admin Console.
+   a. Load ac_qos_lbed_7.x.xml QoS file.
+      - In Admin Console navigate to View -> Preferences.
+      - In the Preferences Window select Administraiton in the left panel.
+         - In the Administration window select 'Add Files(s)' from the Files specifying QoS profiles section and navaigate to the XML file.
+      - Once loaded, open the drop down menu in the Domains section and select the profile "AC_LBED_Admin".
+
+
+2. In Admin Console DDS logical view configure publishing
+   a. Configure publishing
+      - Right click on domain 0 and select 'Publish'.
+      - Enter topic name 'Square'
+      - Select 'Load Data Types from XML file'
+        - Select "+" and navigate to ShapeType_orig.xml then press "OK".
+        - Select ShapeType type name from the drop down list.
+        - Open the advanced settings.
+         - Select the QoS profile named "AC_LBED_Publisher".
+      - Select 'OK'
+
+      - Select Square topic from DDS logical view.
+      - Select Publication tab.
+      - Modify Python code to populate samples.
+
+3. Start TSS application
+   a. From build directory:  ./Shapetype_subscriber -type shapetype -topic sq
